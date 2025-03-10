@@ -109,14 +109,12 @@ addEventListener('fetch', event => {
 /*通过分析链接 实时获取favicon
 * @url 需要分析的Url地址
 */
-function getFavicon(url){
-  if(url.match(/https{0,1}:\/\//)){
-    //return "https://ui-avatars.com/api/?bold=true&size=36&background=0D8ABC&color=fff&rounded=true&name=" + url.split('//')[1];
-    return "https://www.google.com/s2/favicons?sz=64&domain_url=" + url;
-  }else{
-    //return "https://ui-avatars.com/api/?bold=true&size=36&background=0D8ABC&color=fff&rounded=true&name=" + url;
-    return "https://www.google.com/s2/favicons?sz=64&domain_url=http://" + url;
-  } 
+function getFavicon(url) {
+  if (url.match(/^https?:\/\//)) {
+    return "https://favicon.yandex.net/favicon/" + new URL(url).hostname;
+  } else {
+    return "https://favicon.yandex.net/favicon/" + url;
+  }
 }
 
 /** Render Functions
